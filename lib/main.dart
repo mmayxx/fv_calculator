@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:fv_calculator/components/sidebar.dart';
 
 void main() {
@@ -34,6 +35,7 @@ class _HomeState extends State<Home> {
         elevation: 0,
         leading: ToggleAside(),
         foregroundColor: Colors.black,
+        systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: Colors.black),
       ),
       body: Center(
         child: Column(
