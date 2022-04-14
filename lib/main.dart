@@ -15,6 +15,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Home(),
@@ -40,6 +42,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       drawer: Aside(),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
