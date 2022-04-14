@@ -1,5 +1,6 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_const_constructors_in_immutables
 // ignore_for_file: avoid_returning_null_for_void
+// ignore_for_file: prefer_const_literals_to_create_immutables
 import 'package:flutter/material.dart';
 
 class Aside extends StatefulWidget {
@@ -10,6 +11,7 @@ class Aside extends StatefulWidget {
 }
 
 class _AsideState extends State<Aside> {
+  bool _isSelected = false;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -35,15 +37,21 @@ class _AsideState extends State<Aside> {
               decoration: BoxDecoration(color: Colors.red),
             ),
             ListTile(
-              leading: Icon(Icons.favorite),
-              title: Text('favorites'),
-              onTap: () => null,
+              leading: Icon(
+                Icons.favorite,
+                color: _isSelected ? Colors.red : null,
+              ),
+              title: Text('favourites'),
+              onTap: () => setState(() {
+                _isSelected = !_isSelected;
+              }),
             ),
             ListTile(
-              leading: Icon(Icons.share),
-              title: Text('share'),
-              onTap: () => null,
-            ),
+                leading: Icon(
+                  Icons.share,
+                ),
+                title: Text('share'),
+                onTap: () => null),
             ListTile(
               leading: Icon(Icons.settings),
               title: Text('settings'),

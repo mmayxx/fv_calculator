@@ -1,5 +1,9 @@
+// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fv_calculator/components/list_options.dart';
 import 'package:fv_calculator/components/sidebar.dart';
 
 void main() {
@@ -26,6 +30,13 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  int _selectedIndex = 0;
+  void _onOptionSelect(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,13 +46,41 @@ class _HomeState extends State<Home> {
         elevation: 0,
         leading: ToggleAside(),
         foregroundColor: Colors.black,
+        actions: <Widget>[
+          Padding(
+            padding: EdgeInsets.only(right: 20.0),
+            child: GestureDetector(
+              onTap: () => null, //user_route
+              child: CircleAvatar(
+                radius: 15,
+                backgroundColor: Colors.red,
+                child: ClipOval(
+                    child: Icon(
+                  Icons.person,
+                  color: Colors.white,
+                )),
+              ),
+            ),
+          )
+        ],
         systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: Colors.black),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[],
-        ),
+      body: Column(
+        children: <Widget>[
+          Expanded(child: listOptions().elementAt(_selectedIndex)),
+          BottomNavigationBar(
+            items: <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.calculate), label: 'calculate'),
+              BottomNavigationBarItem(icon: Icon(Icons.list), label: 'options'),
+              BottomNavigationBarItem(icon: Icon(Icons.info), label: 'info')
+            ],
+            currentIndex: _selectedIndex,
+            selectedItemColor: Colors.red,
+            onTap: _onOptionSelect,
+            elevation: 0,
+          ),
+        ],
       ),
     );
   }
