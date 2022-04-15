@@ -1,4 +1,5 @@
 // ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_literals_to_create_immutables
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -36,6 +37,12 @@ class _CalculatorState extends State<Calculator> {
     }
   }
 
+  _clearAll() {
+    _pv.text = '';
+    _roi.text = '';
+    _n.text = '';
+  }
+
   @override
   void dispose() {
     super.dispose();
@@ -46,7 +53,7 @@ class _CalculatorState extends State<Calculator> {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        color: Color(0xFFFFF7F7),
+        color: Color(0xFFFDFCFF),
         child: Column(
           children: [
             // result
@@ -66,7 +73,6 @@ class _CalculatorState extends State<Calculator> {
             // present val
             Container(
               decoration: BoxDecoration(color: Color(0xFFFFFFFF)),
-              padding: EdgeInsets.symmetric(horizontal: 5, vertical: 0),
               margin: EdgeInsets.only(left: 18, right: 18, bottom: 22),
               child: Material(
                 elevation: 2,
@@ -89,7 +95,6 @@ class _CalculatorState extends State<Calculator> {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(5)),
                   color: Color(0xFFFFFFFF)),
-              padding: EdgeInsets.symmetric(horizontal: 5, vertical: 0),
               margin: EdgeInsets.only(left: 18, right: 18, bottom: 22),
               child: Material(
                 elevation: 2,
@@ -113,7 +118,6 @@ class _CalculatorState extends State<Calculator> {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(5)),
                   color: Color(0xFFFFFFFF)),
-              padding: EdgeInsets.symmetric(horizontal: 5, vertical: 0),
               margin: EdgeInsets.only(left: 18, right: 18, bottom: 22),
               child: Material(
                 elevation: 2,
@@ -131,15 +135,54 @@ class _CalculatorState extends State<Calculator> {
                 ),
               ),
             ),
-            ElevatedButton(
-                onPressed: () => [_futureValue(), setState(() {})],
-                child: Text('calculate'),
-                style: ElevatedButton.styleFrom(
-                    primary: Colors.redAccent,
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 100, vertical: 10),
-                    textStyle:
-                        TextStyle(fontSize: 21, fontWeight: FontWeight.bold)))
+            Container(
+              margin: EdgeInsets.only(left: 18, right: 18),
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    ElevatedButton(
+                        onPressed: () => [_futureValue(), setState(() {})],
+                        child: Wrap(
+                          children: <Widget>[
+                            Icon(Icons.call_to_action),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              'calculate',
+                              style: TextStyle(letterSpacing: .5),
+                            )
+                          ],
+                        ),
+                        style: ElevatedButton.styleFrom(
+                            primary: Color(0xff5c44d4),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 15, vertical: 5),
+                            textStyle: TextStyle(fontSize: 16))),
+                    ElevatedButton(
+                        onPressed: () => [_clearAll(), setState(() {})],
+                        child: Wrap(
+                          children: <Widget>[
+                            Icon(
+                              Icons.clear,
+                              size: 20,
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text(
+                              'AC',
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            )
+                          ],
+                        ),
+                        style: ElevatedButton.styleFrom(
+                            primary: Color(0xffffcf4d),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 5, vertical: 5),
+                            textStyle: TextStyle(fontSize: 16))),
+                  ]),
+            ),
           ],
         ),
       ),

@@ -17,8 +17,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(fontFamily: 'Poppins'),
       home: Home(),
     );
   }
@@ -45,10 +46,10 @@ class _HomeState extends State<Home> {
       resizeToAvoidBottomInset: false,
       drawer: Aside(),
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
+        backgroundColor: Color(0xff5c44d4),
+        elevation: 0.5,
         leading: ToggleAside(),
-        foregroundColor: Colors.black,
+        foregroundColor: Colors.white,
         actions: <Widget>[
           Padding(
             padding: EdgeInsets.only(right: 20.0),
@@ -66,7 +67,6 @@ class _HomeState extends State<Home> {
             ),
           )
         ],
-        systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: Colors.black),
       ),
       body: Column(
         children: <Widget>[
@@ -81,7 +81,7 @@ class _HomeState extends State<Home> {
             currentIndex: _selectedIndex,
             selectedItemColor: Colors.red,
             onTap: _onOptionSelect,
-            elevation: 0,
+            elevation: 15,
           ),
         ],
       ),

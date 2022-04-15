@@ -3,17 +3,16 @@
 import 'package:flutter/material.dart';
 import 'package:fv_calculator/calculator.dart';
 import 'package:fv_calculator/content.dart';
+import 'package:fv_calculator/credit.dart';
 
 List<Widget> listOptions() {
   return <Widget>[
     ContentBox(content: Calculator()),
     ContentBox(
         content: Text(
-      'contain[1]',
+      'currently this calculator only supports "end" option',
+      style: TextStyle(color: Colors.blueAccent),
     )),
-    ContentBox(
-        content: Text(
-      'contain[2]',
-    )),
+    ContentBox(content: Credit()),
   ];
 }
