@@ -54,7 +54,19 @@ class _HomeState extends State<Home> {
           Padding(
             padding: EdgeInsets.only(right: 20.0),
             child: GestureDetector(
-              onTap: () => null, //user_route
+              onTap: () => showModalBottomSheet(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: MediaQuery.of(context).size.height * 0.19,
+                      alignment: Alignment.center,
+                      child: Text(
+                        'Sign in to confirm',
+                        style: TextStyle(color: Colors.blue, fontSize: 21),
+                      ),
+                    );
+                  }), //user_route
               child: CircleAvatar(
                 radius: 15,
                 backgroundColor: Color.fromARGB(255, 124, 76, 255),
