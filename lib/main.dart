@@ -57,7 +57,7 @@ class _HomeState extends State<Home> {
               onTap: () => null, //user_route
               child: CircleAvatar(
                 radius: 15,
-                backgroundColor: Colors.red,
+                backgroundColor: Color.fromARGB(255, 124, 76, 255),
                 child: ClipOval(
                     child: Icon(
                   Icons.person,

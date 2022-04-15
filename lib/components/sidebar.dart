@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_constructors_in_immutables
 // ignore_for_file: avoid_returning_null_for_void
 // ignore_for_file: prefer_const_literals_to_create_immutables
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -106,6 +105,6 @@ class _ToggleAsideState extends State<ToggleAside> {
   Widget build(BuildContext context) {
     return IconButton(
         onPressed: () => Scaffold.of(context).openDrawer(),
-        icon: Icon(Icons.menu));
+        icon: Icon(Icons.list_rounded));
   }
 }
