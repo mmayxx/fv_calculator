@@ -32,6 +32,7 @@ class _CalculatorState extends State<Calculator> {
       }
     } on Exception catch (e) {
       if (e is FormatException) {
+        isValid = false;
         return "Invalid input format";
       }
     }
